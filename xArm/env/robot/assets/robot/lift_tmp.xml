@@ -1,0 +1,78 @@
+<mujoco> 
+	<compiler angle="radian" coordinate="local" meshdir="fetch" texturedir="texture" />
+	<size nconmax="2000" njmax="500" />
+	<option timestep="0.002">
+		<flag warmstart="enable" />
+	</option>
+	<include file="shared.xml" />
+	<worldbody>
+		
+		<body name="floor0" pos="0 0 0">
+			<geom condim="3" material="floor_mat" name="floorgeom0" pos="1.2 -2.0 0" size="20.0 20.0 1" type="plane" />
+		</body>
+
+		<include file="robot_xarm_real.xml" />
+
+		<body name="pedestal0" pos="0.75 0 0.6325">
+			<geom mass="2000" material="pedestal_mat" name="pedestalgeom0" pos="0.32 0.27 0" size="0.1 0.1 0.01" type="box" />
+			<site name="robotmountsite0" pos="0.30 0.30 0" rgba="0.55 0.54 0.53 1" size="0.075 0.075 0.002" type="box" />
+		</body>
+		
+
+		<body name="table0" pos="1.5 0.075 0.3425">
+		
+			<geom density="2000" friction="1 1 1" material="table_mat_white" name="tablegeom0" pos="0 0 0" size="0.3 0.6 0.2" type="box" />
+		</body>
+
+		<body name="object" pos="1.405 0.3 0.58625">
+			<joint limited="false" name="object_joint0" type="free" />
+			<geom condim="4" density="50000" friction="1 1 1" material="block_mat" name="object0" size="0.035 0.035 0.035" solimp="1 1 1" solref="0.02 1" type="box" />
+			<site name="object_site" pos="0 0 0" rgba="1 0 0 0" size="0.035 0.035 0.035" type="box" />
+		</body>
+
+		
+		<light ambient="0.1 0.1 0.1" castshadow="false" diffuse="0 0 0" dir="-0.57 -0.57 -0.57" directional="true" name="light0" pos="1.65 0 10" specular="0 0 0" />
+        <light ambient="0.1 0.1 0.1" castshadow="false" diffuse="0 0 0" dir="0 1 -0.1" directional="true" name="light1" pos="0 -4 4" specular="0 0 0" />
+        <light ambient="0.05 0.05 0.05" castshadow="false" diffuse="0 0 0" directional="true" name="light2" pos="2.13 1.6 2.5" specular="0 0 0" />
+        <light castshadow="false" diffuse="0.3 0.3 0.3" dir="0.2 0.2 -0.8" directional="true" name="light3" pos="0 0 2" />
+		
+		
+		  <body name="camera_target" pos="1.4 0.3 0.8">
+            <geom conaffinity="0" contype="0" pos="0 0 0" rgba="0 0 1 0" size="0.0475 0.0475 0.001" type="box" />
+        </body>
+	
+    
+	
+	
+	
+	
+	
+
+		<camera euler="-1.1 -0.6 3.4" fovy="50" name="camera_dynamic" pos="0.9559 1.0 1.1" />
+		
+		<camera euler="-1.1 -0.6 3.4" fovy="50" name="camera_static" pos="0.9559 1.0 1.1" />
+      
+
+    
+      
+	</worldbody>
+	
+	<equality>
+    	<connect anchor="0.0 0.035 0.042" body1="left_inner_knuckle" body2="left_finger" solimp="0.9 0.95 0.001 0.5 2" solref="0.0002 1.0" />
+    	<connect anchor="0.0 -0.035 0.042" body1="right_inner_knuckle" body2="right_finger" solimp="0.9 0.95 0.001 0.5 2" solref="0.0002 1.0" />
+        <joint joint1="left_inner_knuckle_joint" joint2="right_inner_knuckle_joint" />
+    </equality>
+
+    <actuator>
+		
+		
+		
+
+		
+		
+		
+		<motor ctrllimited="true" ctrlrange="-1.0 1.0" gear="200.0" joint="left_inner_knuckle_joint" />
+        <motor ctrllimited="true" ctrlrange="-1.0 1.0" gear="200.0" joint="right_inner_knuckle_joint" />
+        
+    </actuator>
+</mujoco>

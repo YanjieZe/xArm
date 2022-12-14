@@ -1,0 +1,18 @@
+name: xArm
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - pytorch
+  - torchvision
+  - cudatoolkit=11.3
+  - pip
+  - pip:
+    - termcolor
+    - gym==0.21.0
+    - mujoco-py
+    - pandas
+    - wandb
+    - moviepy
+    - imageio
+    - opencv-python
