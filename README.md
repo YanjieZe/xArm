@@ -24,8 +24,5 @@ python setup.py develop
 See `example.py` for simple usage.
 
 - observation_type: `state`, `image`, `state+image`. Note that `state+image` means using the robot state (xyzw).
-- action_space: `xy`, `xyz`, `xyzw`
-- camera_mode: `static`, `static+dynamic`, `dynamic`
-- camera_move_range: moving angle of dynamic camera
 - domain_randomization: whether to use domain_randomization
 

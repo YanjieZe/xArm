@@ -6,16 +6,15 @@ env = xArm.make_env(
 		seed=0,
 		episode_length=100,
         image_size=84,
-		observation_type="state+image", # state, image, state+image
-		action_space="xyzw",
+		observation_type="state", # state, image, state+image
 		domain_randomization=0,
 	)
 
-obs, state, info = env.reset()
+obs = env.reset()
 returns = 0
 for i in range(100):
 	action = env.action_space.sample()
-	obs, state, reward, done, info = env.step(action)
+	obs, reward, done, info = env.step(action)
 	returns += reward
 
 print("returns:", returns)
